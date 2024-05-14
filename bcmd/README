@@ -6,6 +6,7 @@
 #  This file is a derivative work from SYSeg (https://gitlab.com/monaco/syseg)
 #  and contains modifications carried out by the following author(s):
 #  MVellosa <mvellosa@usp.br>
+#  Artur Weber <arturweber@usp.br>
 
  BootCmd : Boot Command
  ==============================
