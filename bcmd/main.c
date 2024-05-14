@@ -16,12 +16,27 @@
 #define SIZE 20			/* Read buffer size. */
 
 char buffer[SIZE];		/* Read buffer.      */
+char name[SIZE];
+
+void calledFrancisco() {
+  println ("What is your first name?");
+
+  print(PROMPT);
+  readln(name);
+
+  if (!strcmp(name,"Francisco"))
+	    println("You are called Francisco");
+	  else 
+	    println("You are not called Francisco");
+}
 
 int main()
 {
   clear();
   
   println  ("Boot Command 1.0");
+
+  calledFrancisco();
 
   while (1)
     {
