@@ -1,0 +1,9 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: so2-mvellosa
+Upstream-Contact: MVellosa <mvellosa@usp.br>
+Source: https://github.com/courselab/so2-mvellosa.git
+
+Files: */.dist
+Copyright: MVellosa <mvellosa@usp.br>
+License: CC0-1.0
+

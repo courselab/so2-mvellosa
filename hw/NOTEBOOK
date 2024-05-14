@@ -1,0 +1,11 @@
+#    SPDX-FileCopyrightText: 2024 MVellosa <mvellosa@usp.br>
+#   
+#    SPDX-License-Identifier: GPL-3.0-or-later
+
+d) the binary file produced from hwasm.py is identical to the example one (eg-01.asm), as observed by using the command 
+    diff -s eg-01.bin eg-01.asm.
+
+e) after disassembling hw.bin, it is possible to see that the output is nearly the same as hw.S file, with the exception of the comments,
+    characters as their respective ASCII values, and the labels (as expected).
+
+f) booting the file with qemu shows the expected result (a screen with the phrase "Hello, World!") and works as expected.
