@@ -8,8 +8,12 @@ d) the binary file produced from hwasm.py is identical to the example one (eg-01
 e) after disassembling hw.bin, it is possible to see that the output is nearly the same as hw.S file, with the exception of the comments,
     characters as their respective ASCII values, and the labels (as expected).
 
-f) booting the file with qemu shows the expected result (a screen with the phrase "Hello, World!") and works as expected.
+f) booting the file with qemu shows the expected result (a screen with the phrase "Hello, World") and works as expected.
 
-g) Although mounting the program on a thumb drive was successful, booting the file on real hardware didn't work as expected, 
-    probably because of legacy boot option not being available on the hardware used.
+g) Booting from the thumb drive on the first try was successful, showing only a black screen with the phrase "Hello, World" just like qemu
+
+i) Using the GNU toolchain to compile the hw.S file with the following command: "as --32 hw.S -o hw2.o" and linking with the same command
+   as before (ld -melf_i386 --oformat=binary -Ttext=0x7c00 hw2.o -o hw2.bin) produces the same result when running on qemu, showing the
+   phrase "Hello, World" on the screen.
+   When analising both hw.bin and hw2.bin binary files with the command "diff -s hw.bin hw2.bin", we get the message "Files hw.bin and hw2.bin are identical".  
 
