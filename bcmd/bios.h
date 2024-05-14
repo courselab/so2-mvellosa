@@ -16,6 +16,6 @@ void __attribute__((fastcall)) clear (void);
 void __attribute__((fastcall)) print();
 void __attribute__((fastcall)) println();
 void __attribute__((fastcall)) readln(char *);
-
+void __attribute__((fastcall)) get_current_time();
 
 #endif

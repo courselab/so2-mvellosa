@@ -8,7 +8,7 @@
 #  MVellosa <mvellosa@usp.br>
 
 	.code16
-	.global clear, print, readln, println, strcmp
+	.global clear, print, readln, println, strcmp, get_current_time
 	
 	.section .text
 
@@ -114,3 +114,46 @@ readln_end:
 crlf:
 	.byte 0xd, 0x0a, 0x0 	/* CR-FL seqquence.  */
 
+get_current_time:
+    ; Disable interrupts
+    cli
+
+    ; Select RTC register B and disable NMI
+    mov al, 0x8B
+    out 0x70, al
+
+    ; Read RTC register B
+    in al, 0x71
+
+    ; Enable periodic interrupt
+    or al, 0x40
+
+    ; Write back to RTC register B
+    out 0x70, al
+
+    ; Wait for the update-in-progress flag to clear
+	.wait_for_update:
+    in al, 0x71
+    test al, 0x80
+    jnz .wait_for_update
+
+    ; Read RTC registers
+    mov al, 0x00  ; Select RTC register 0 (seconds)
+    out 0x70, al
+    in al, 0x71   ; Read seconds
+    mov byte [rdi], al
+
+    mov al, 0x02  ; Select RTC register 2 (minutes)
+    out 0x70, al
+    in al, 0x71   ; Read minutes
+    mov byte [rdi+1], al
+
+    mov al, 0x04  ; Select RTC register 4 (hours)
+    out 0x70, al
+    in al, 0x71   ; Read hours
+    mov byte [rdi+2], al
+
+    ; Re-enable interrupts
+    sti
+
+    ret

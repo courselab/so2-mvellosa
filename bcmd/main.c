@@ -23,6 +23,15 @@ int main()
   
   println  ("Boot Command 1.0");
 
+  unsigned char current_time[3]; // Array para armazenar horas, minutos e segundos
+
+  // Chamando a função assembly
+  get_current_time(current_time);
+
+  // Exibindo a hora atual
+  println("Hora atual: %02d:%02d:%02d\n", current_time[2], current_time[1], current_time[0]);
+
+
   while (1)
     {
       print(PROMPT);		/* Show prompt.               */
