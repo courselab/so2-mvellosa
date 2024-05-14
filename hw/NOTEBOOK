@@ -9,3 +9,7 @@ e) after disassembling hw.bin, it is possible to see that the output is nearly t
     characters as their respective ASCII values, and the labels (as expected).
 
 f) booting the file with qemu shows the expected result (a screen with the phrase "Hello, World!") and works as expected.
+
+g) Although mounting the program on a thumb drive was successful, booting the file on real hardware didn't work as expected, 
+    probably because of legacy boot option not being available on the hardware used.
+
