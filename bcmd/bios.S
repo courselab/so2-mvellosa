@@ -1,14 +1,13 @@
 #    SPDX-FileCopyrightText: 2021 Monaco F. J. <monaco@usp.br>
+#    SPDX-FileCopyrightText: 2024 ArturWeber
 #    SPDX-FileCopyrightText: 2024 MVellosa <mvellosa@usp.br>
 #   
 #    SPDX-License-Identifier: GPL-3.0-or-later
 #
-#  This file is a derivative work from SYSeg (https://gitlab.com/monaco/syseg)
-#  and contains modifications carried out by the following author(s):
-#  MVellosa <mvellosa@usp.br>
+#    This file is part of SYSeg, available at https://gitlab.com/monaco/syseg.
 
 	.code16
-	.global clear, print, readln, println, strcmp
+	.global clear, print, readln, println, strcmp /*, print_char*/
 	
 	.section .text
 
@@ -70,7 +69,7 @@ println:
 	##
 	## Reads a CR-terminated line from keyboard into buffer.
 
-	
+ 
 readln:
 	pusha	                /* Save all GP registers.                     */
 
@@ -110,6 +109,16 @@ readln_end:
 	##
 	
 	.section .rodata
+
+; /*print_char:*/
+; 	/* pusha 			/* Save all GP registers.              */
+; 	/* mov %cx, %ax */		/* Copy argument into base register.   */
+
+; 	/* mov $0x0e, %ah */
+; 	/* int $0x10 */		/* Call BIOS video service.            */
+
+; 	/* popa	*/		/* Restore all GP registers.           */
+; 	/* ret */
 
 crlf:
 	.byte 0xd, 0x0a, 0x0 	/* CR-FL seqquence.  */
