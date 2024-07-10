@@ -42,18 +42,6 @@ SECTIONS
 	  logo.o       (.rodata)		  /* Some ASCII "art".      */
 	}
 
-	/* For the sake of illustration, we are statically linking an example
-	   user program directly to the kernel, so that we can simulate an
-	   external program execution. If we were to load and execute an 
-	   external program for real, we should remove the following section
-	   entirely from this linker script (and update the Makefile 
-	   accordingly).*/	
-
-	.prog_example :		
-	{
-	  prog.o      (.text .data .bss. .rodata)
-	  libtydos.o  (.text .data .bss. .rodata)
-	}
 
 	_KERNEL_SIZE = . - _KERNEL_ADDR; /* How many bytes we'll read.      */
 

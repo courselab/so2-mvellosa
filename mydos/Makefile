@@ -30,14 +30,6 @@ all: $(dos).bin prog.bin
 $(dos).bin : bootloader.o bios1.o kernel.o kaux.o bios2.o logo.o syscall.o 
 	ld -melf_i386 -T tydos.ld --orphan-handling=discard $^ -o $@
 
-# Here we are statically linking the user program 'prob.bin' into the kernel,
-# so as to simulate the execution of a user program. If we were to actually load
-# and execute an external program, we should remove 'prog.o' and 'libtydos.o'
-# from the list of pre-requisites, and edit the linker script accordingly.
-# Comment out the following line if this is the case.
-
-$(dos).bin : prog.o libtydos.o 
-
 # Rules to build objects from either C or assembly code.
 
 %.o : %.c

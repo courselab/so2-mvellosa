@@ -110,23 +110,8 @@ void f_quit()
   go_on = 0;
 }
 
-/* Built-in shell command: example.
-
-   Execute an example user program which invokes a syscall.
-
-   The example program (built from the source 'prog.c') is statically linked
-   to the kernel by the linker script (tydos.ld). In order to extend the
-   example, and load and external C program, edit 'f_exec' and 'prog.c' choosing
-   a different name for the entry function, such that it does not conflict with
-   the 'main' function of the external program.  Even better: remove 'f_exec'
-   entirely, and suppress the 'example_program' section from the tydos.ld, and
-   edit the Makefile not to include 'prog.o' and 'libtydos.o' from 'tydos.bin'.
-
-  */
-
-extern int main();
 void f_exec()
 {
-  main();			/* Call the user program's 'main' function. */
+  return;
 }
 
