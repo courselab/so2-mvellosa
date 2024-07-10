@@ -23,7 +23,7 @@ dos=$(shell basename $$(realpath .))
 
 # Build the OS and an example user program.
 
-all: $(dos).bin prog.bin
+all: $(dos).bin prog.bin disk.img
 
 # Link all objects needed by the OS.
 
@@ -47,6 +47,10 @@ $(dos).bin : .EXTRA_PREREQS = rt0.o tydos.ld
 # Rules to build the user programs
 # You would add new programs to this variable if bulding other user programs.
 # The user library is automatically added by the linker script.
+
+disk.img:
+	rm -f $@
+	dd if=/dev/zero of=$@ count=2880
 
 progs = prog.bin
 
