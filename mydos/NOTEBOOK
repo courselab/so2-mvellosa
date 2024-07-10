@@ -1,3 +1,12 @@
 #    SPDX-FileCopyrightText: 2024 mvellosa <80607728+mvellosa@users.noreply.github.com>
 #   
 #    SPDX-License-Identifier: GPL-3.0-or-later
+
+Passo 1, 2, 3:
+- Criação do diretório do projeto exportando o arquivo do syseg/try
+- executando o projeto mydos e lendo o código fonte
+Passo 4:
+- Removendo o programa exemplo linkado estaticamente no makefile, no tydos.ld(linked) e 
+  retirando a função main do programa exemplo como entrypoint 
+Passo 5:
+- Criando a imagem de 1.44MB com o comando dd do mesmo modo como encontrado no makefile do eg/tyfs e formatando a imagem com o eg/tyfsedit
