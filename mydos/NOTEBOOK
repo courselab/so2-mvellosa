@@ -10,3 +10,13 @@ Passo 4:
   retirando a função main do programa exemplo como entrypoint 
 Passo 5:
 - Criando a imagem de 1.44MB com o comando dd do mesmo modo como encontrado no makefile do eg/tyfs e formatando a imagem com o eg/tyfsedit
+Passo 6:
+- adicionando o sistema operacional na imagem pulando os primeiros 16 bytes por ser o tamanho do header do tyfs
+- nesse passo usamos o comando dd com as flags :
+  -if (define o arquivo de entrada)
+  -of (define o arquivo de saída)
+  -bs (define o tamanho do bloco)
+  -seek (pula os primeiros bytes do arquivo de saida)
+  -conv=notrunc (não trunca o arquivo de saida para que o restante não seja alterado)
+Passo 7:
+- buildando de novo o programa com as novas regras e executando o so no qemu vemos que funciona normalmente :D
