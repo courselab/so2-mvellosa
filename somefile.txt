@@ -1,0 +1,3 @@
+This is a completely unrelated file, that happens to be on the disk image.
+
+that's all
