@@ -23,7 +23,7 @@ dos=$(shell basename $$(realpath .))
 
 # Build the OS and an example user program.
 
-all: $(dos).bin prog.bin disk.img
+all: $(dos).bin prog.bin disk.img insert-boot
 
 # Link all objects needed by the OS.
 
@@ -51,6 +51,10 @@ $(dos).bin : .EXTRA_PREREQS = rt0.o tydos.ld
 disk.img:
 	rm -f $@
 	dd if=/dev/zero of=$@ count=2880
+	printf "open disk.img \n format \n 20 \n 16 \n put somefile.txt \n quit" | ./tyfsedit
+
+insert-boot: disk.img
+	dd if=$(dos).bin of=disk.img bs=1 seek=16 conv=notrunc
 
 progs = prog.bin
 
@@ -79,7 +83,7 @@ libtydos.a : libtydos.o
 .PHONY: clean
 
 clean:
-	rm -f *.bin *.o *~ *.s *.a
+	rm -f *.bin *.o *~ *.s *.a *.img
 
 
 ## Bintools: convenience rules for inspecting binary files
