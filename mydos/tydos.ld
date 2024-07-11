@@ -46,6 +46,8 @@ SECTIONS
 	_KERNEL_SIZE = . - _KERNEL_ADDR; /* How many bytes we'll read.      */
 
 	_END_STACK = 0x7c00;	/* Place the stack bellow the program.      */
+
+	_MEM_POOL = .; 		/* The memory pool starts here. */
 	
 }
 STARTUP(rt0.o)			 /* Prepend with the start file. */
